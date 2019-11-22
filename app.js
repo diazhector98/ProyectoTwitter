@@ -13,11 +13,12 @@ function searchTweets(query) {
   }
   T.get('search/tweets', params, function(err, data, response) {
     if(!err){
-        console.log(data)
+        console.log(data.statuses)
+        Mongo.insertObjectsToDatabase(data.statuses);
     } else {
         console.log(err);
     }
   })
 }
 
-Mongo.insertObjectsToDatabase([{text: "Texto", titulo: "Titulo"}]);
+searchTweets("cancun")

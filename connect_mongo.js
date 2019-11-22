@@ -7,7 +7,7 @@ function insertObjectsToDatabase(objects) {
     if (err) {
       console.log("There was an error")
     }
-
+    
     var dbo = client.db("twitter");
     const collection = dbo.collection("tweets");
 
