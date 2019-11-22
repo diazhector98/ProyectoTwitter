@@ -1,14 +1,6 @@
 var Twitter = require('twitter');
-var MongoClient = require('mongodb');
 var config = require('./config.js');
-
-var url = "mongodb://localhost:27017/mydb";
-
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  console.log("Database created!");
-  db.close();
-});
+var Mongo = require('./connect_mongo.js');
 
 function searchTweets(query) {
   // Set up your search parameters
@@ -19,12 +11,13 @@ function searchTweets(query) {
       result_type: 'recent',
       lang: 'en'
   }
-
   T.get('search/tweets', params, function(err, data, response) {
-  if(!err){
-      console.log(data)
-  } else {
-      console.log(err);
-  }
+    if(!err){
+        console.log(data)
+    } else {
+        console.log(err);
+    }
   })
 }
+
+Mongo.insertObjectsToDatabase({});
