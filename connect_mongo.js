@@ -11,13 +11,16 @@ function insertObjectsToDatabase(objects) {
     var dbo = client.db("twitter");
     const collection = dbo.collection("tweets");
 
-    var myobj = { text: "Company Inc", address: "Highway 37" };
+    objects.forEach((obj) => {
+      console.log(obj)
+      collection.insertOne(obj, function(err, res) {
+        if (err) throw err;
+        console.log("Document inserted");
+        client.close();
+      });
+    })
 
-    collection.insertOne(myobj, function(err, res) {
-      if (err) throw err;
-      console.log("1 document inserted");
-      client.close();
-    });
+
   });
 }
 

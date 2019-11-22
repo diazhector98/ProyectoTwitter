@@ -20,4 +20,4 @@ function searchTweets(query) {
   })
 }
 
-Mongo.insertObjectsToDatabase({});
+Mongo.insertObjectsToDatabase([{text: "Texto", titulo: "Titulo"}]);
