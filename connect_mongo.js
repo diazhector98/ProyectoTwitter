@@ -7,7 +7,7 @@ function insertObjectsToDatabase(objects) {
     if (err) {
       console.log("There was an error")
     }
-    
+
     var dbo = client.db("twitter");
     const collection = dbo.collection("tweets");
 
@@ -24,6 +24,22 @@ function insertObjectsToDatabase(objects) {
   });
 }
 
+function deleteAllTweets() {
+  const uri = "mongodb+srv://user_bda:bdavanzadas@cluster0-oqgjb.mongodb.net/video?retryWrites=true&w=majority";
+  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  client.connect(err => {
+    if (err) {
+      console.log("There was an error")
+    }
+
+    var dbo = client.db("twitter");
+    const collection = dbo.collection("tweets");
+    collection.deleteMany({})
+    client.close()
+  });
+}
+
 module.exports = {
-  insertObjectsToDatabase
+  insertObjectsToDatabase,
+  deleteAllTweets
 }

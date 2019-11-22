@@ -21,4 +21,5 @@ function searchTweets(query) {
   })
 }
 
-searchTweets("cancun")
+searchTweets("futbol")
+//Mongo.deleteAllTweets()
